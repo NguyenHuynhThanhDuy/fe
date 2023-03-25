@@ -12,12 +12,14 @@ import cookies from 'react-cookies';
 import { faEye, faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handelNotify } from '~/core/utils/req';
+import { useNavigate } from "react-router-dom";
 import {
     createTestService, getTestByIdService,
     getTestService
 } from '~/service/testService'
 
 function Test() {
+    const navigate = useNavigate();
     const token = cookies.load('Tokenadmin');
     const limit = 10;
     const [test, setTest] = useState({
@@ -38,6 +40,12 @@ function Test() {
             console.log(data)
         } catch (error) {
         }
+    }
+
+    const getTest = async (id) => {
+
+        navigate('/admin/doExam/' + id)
+
     }
 
     useEffect(() => {
@@ -79,7 +87,7 @@ function Test() {
                                                                 <td className='text-break'>{item.startDate}</td>
                                                                 <td className='text-break'>{item.time}</td>
                                                                 <td className='text-break'>
-                                                                    <button>Làm bài</button>
+                                                                    <button onClick={(e) => getTest(item.id)}>Làm bài</button>
                                                                 </td>
                                                             </tr>
                                                         )

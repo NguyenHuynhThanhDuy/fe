@@ -7,6 +7,7 @@ import productDetail from '~/pages/product/productDetail';
 import loginAdmin from '~/admin/Login';
 import userAdmin from '~/admin/UserAdmin';
 import test from '~/admin/Test';
+import DoExam from '~/admin/doExam';
 
 import cart from '~/pages/cart/cart';
 import UserProfile from '~/pages/userprofile/userprofile';
@@ -64,6 +65,7 @@ const privateRoutesA = [
     { path: '/store/*', component: userAdmin, layout: AdminLayout },
     { path: '/admin/login', component: loginAdmin, layout: null },
     { path: '/admin/test', component: test, layout: AdminLayout },
+    { path: '/admin/doExam/:id', component: DoExam, layout: null },
 ]
 
 const privateRoutesM = [

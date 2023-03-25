@@ -1,5 +1,5 @@
 import request from '~/core/utils/axios';
-
+import request1 from '~/core/utils/axios1';
 const loginService = (user) => {
     // const config = {
     //     headers: { Authorization: `Bearer ${token}` }
@@ -9,8 +9,8 @@ const loginService = (user) => {
         ...user
     };
 
-    return request.post(
-        'auth/signin',
+    return request1.post(
+        'users/signin',
         bodyParameters
     )
 }
