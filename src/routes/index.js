@@ -6,6 +6,8 @@ import changePassword from '~/pages/auth/forgotaccount/changePassowrd'
 import productDetail from '~/pages/product/productDetail';
 import loginAdmin from '~/admin/Login';
 import userAdmin from '~/admin/UserAdmin';
+import test from '~/admin/Test';
+
 import cart from '~/pages/cart/cart';
 import UserProfile from '~/pages/userprofile/userprofile';
 import { AdminLayout, ManagerLayout } from '~/components/Layout';
@@ -61,6 +63,7 @@ const privateRoutesA = [
     { path: '/admin/*', component: userAdmin, layout: AdminLayout },
     { path: '/store/*', component: userAdmin, layout: AdminLayout },
     { path: '/admin/login', component: loginAdmin, layout: null },
+    { path: '/admin/test', component: test, layout: AdminLayout },
 ]
 
 const privateRoutesM = [
