@@ -2,14 +2,41 @@ import request1 from '~/core/utils/axios1';
 import cookies from 'react-cookies';
 
 
-const getTestService = (test) => {
-    return request1.get(
+const getTestService = async (test) => {
+    return await request1.get(
         'test',
     )
 }
-const getTestByIdService = (id) => {
-    return request1.get(
+const getTestByIdService = async (id) => {
+    return await request1.get(
         'test/' + id,
+    )
+}
+
+const createTestDetails = async (body) => {
+    const bodyParameters = {
+        ...body
+    };
+    return await request1.post(
+        'testdetails',
+        bodyParameters
+    )
+}
+
+const compareTestDetails = async (body) => {
+    // const bodyParameters = {
+    //     ...body
+    // };
+    let s = "";
+    if (body.userId) {
+        s += '?userId=' + body.userId + '';
+    }
+    if (body.testId) {
+        s += '&testId=' + body.testId + '';
+    }
+    return await request1.get(
+        'testdetails' + s,
+
     )
 }
 
@@ -29,4 +56,4 @@ const createTestService = (test, token) => {
     )
 }
 
-export { getTestService, getTestByIdService, createTestService }
+export { getTestService, getTestByIdService, createTestService, createTestDetails, compareTestDetails }
