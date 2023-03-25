@@ -33,6 +33,12 @@ function Sidebar() {
                                 <span>Quản lý phân quyền</span>
                             </span>
                         </NavLink>
+                        <NavLink to="/admin/test" className={(navData) => "sidebar-item" + (navData.isActive ? " active" : " link")} >
+                            <span className="sidebar-link">
+                                <FontAwesomeIcon icon={faGears} />
+                                <span>test</span>
+                            </span>
+                        </NavLink>
                     </ul>
                 </div>
                 <button className="sidebar-toggler btn x">
