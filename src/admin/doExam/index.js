@@ -44,7 +44,7 @@ function DoExam() {
         getTest(id)
         console.log(testdetail)
         getAnimalsContent(testdetail)
-    }, [])
+    }, [testdetail])
     const getAnimalsContent = animals => {
         let content = []
         for (let i = 0; i < animals.arrQ.length; i++) {
@@ -77,7 +77,7 @@ function DoExam() {
         const data = (res && res.data) ? res.data : []
         alert("số câu đúng là: " + data.scd + " / " + data.count + "\n" + "điểm là:" + data.mark);
         console.log(data);
-        navigate('/admin/test');
+        navigate('/');
     }
     return (
         <>

@@ -37,7 +37,9 @@ import HistoryOder from '~/pages/historyoder/historyoder';
 
 
 const publicRoutes = [
-    { path: '/', component: Home },
+    //{ path: '/', component: Home },
+    { path: '/', component: test, layout: AdminLayout },
+    { path: '/doExam/:id', component: DoExam, layout: null },
     { path: '/Home', component: Home },
     { path: '/Payment', component: Payment },
     { path: '/Cart', component: cart },

@@ -21,18 +21,7 @@ function Sidebar() {
                 </div>
                 <div className="sidebar-menu">
                     <ul className="menu">
-                        <NavLink to="/admin/user" className={(navData) => "sidebar-item" + (navData.isActive ? " active" : " link")} >
-                            <span className="sidebar-link">
-                                <FontAwesomeIcon icon={faUser} />
-                                <span>Quản lý tài khoản</span>
-                            </span>
-                        </NavLink>
-                        <NavLink to="/admin/role" className={(navData) => "sidebar-item" + (navData.isActive ? " active" : " link")} >
-                            <span className="sidebar-link">
-                                <FontAwesomeIcon icon={faGears} />
-                                <span>Quản lý phân quyền</span>
-                            </span>
-                        </NavLink>
+
                         <NavLink to="/admin/test" className={(navData) => "sidebar-item" + (navData.isActive ? " active" : " link")} >
                             <span className="sidebar-link">
                                 <FontAwesomeIcon icon={faGears} />

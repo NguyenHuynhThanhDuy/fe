@@ -17,6 +17,39 @@ import {
     createTestService, getTestByIdService,
     getTestService
 } from '~/service/testService'
+function start() {
+    // Request permission to capture the screen
+    navigator.mediaDevices.getDisplayMedia({ video: true }).then(stream => {
+        // Create a new MediaRecorder
+        const recorder = new MediaRecorder(stream);
+
+        // Start recording
+        recorder.start();
+
+        // Create an empty buffer to hold the recorded data
+        const buffer = [];
+
+        // Listen for data available events and add the data to the buffer
+        recorder.addEventListener('dataavailable', event => {
+            buffer.push(event.data);
+        });
+
+        // Listen for the stop event and create an MP4 file from the buffer
+        recorder.addEventListener('stop', () => {
+            const blob = new Blob(buffer, { type: 'video/mp4' });
+            // Create a download link and trigger a download
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'screen-recording.mp4';
+            a.click();
+        });
+
+        // Stop recording after 5 seconds
+        setTimeout(() => {
+            recorder.stop();
+        }, 100000);
+    });
+}
 
 function Test() {
     const navigate = useNavigate();
@@ -44,8 +77,8 @@ function Test() {
 
     const getTest = async (id) => {
 
-        navigate('/admin/doExam/' + id)
-
+        navigate('/doExam/' + id)
+        start()
     }
 
     useEffect(() => {
@@ -87,13 +120,15 @@ function Test() {
                                                                 <td className='text-break'>{item.startDate}</td>
                                                                 <td className='text-break'>{item.time}</td>
                                                                 <td className='text-break'>
-                                                                    <button onClick={(e) => getTest(item.id)}>Làm bài</button>
+                                                                    <button onClick={(e) => getTest(item.id)} >Làm bài</button>
                                                                 </td>
+
                                                             </tr>
                                                         )
 
                                                     })
                                                 }
+
                                             </tbody>
                                         </table>
 
